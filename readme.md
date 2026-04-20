@@ -73,6 +73,17 @@ This extension is designed for workflows involving:
 - Sequential tab processing
 - Reducing startup overhead when opening many pages
 
+---
+
+## Planned Features
+
+- Load adjacent tabs (customizable amount)
+- Load all tabs button
+- Visual indicator of placeholder tabs
+- Faster tab opening
+
+---
+
 ## Icon Attribustions
 
 Icon is a combination of the following icons from [Flaticon](https://www.flaticon.com/):
