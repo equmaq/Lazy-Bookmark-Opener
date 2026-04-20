@@ -5,13 +5,33 @@ browser.contextMenus.create({
 	contexts: ["bookmark"]
 });
 
+function unwrapUrl(rawUrl) {
+  try {
+    const url = new URL(rawUrl);
+
+    // Check protocol + pathname only (ignore extension ID entirely)
+    if (
+      url.protocol === "moz-extension:" &&
+      url.pathname.endsWith("/placeholder.html") &&
+      url.hash
+    ) {
+      const data = JSON.parse(decodeURIComponent(url.hash.slice(1)));
+      return data.url || rawUrl;
+    }
+  } catch {
+    // ignore parsing errors
+  }
+
+  return rawUrl;
+}
+
 // Helper: recursively collect URLs from a folder
 async function getDirectBookmarks(folderId) {
   const children = await browser.bookmarks.getChildren(folderId);
   return children
     .filter(node => node.url)
     .map(node => ({
-      url: node.url,
+      url: unwrapUrl(node.url),
       title: node.title || node.url
     }));
 }
