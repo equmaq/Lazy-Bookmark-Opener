@@ -29,3 +29,7 @@ function loadIfVisible() {
 
 loadIfVisible();
 document.addEventListener("visibilitychange", loadIfVisible);
+
+setTimeout(() => {
+    location.reload();
+  }, 500)
