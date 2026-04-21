@@ -17,18 +17,27 @@ if (data?.url) {
   icon.href = "https://www.google.com/s2/favicons?domain=" + new URL(data.url).hostname;
 }
 
-function loadIfVisible() {
-  if (document.visibilityState !== "visible") return;
-  if (!data?.url) return;
+function runWhenTabFocused(callback) {
+  function check() {
+    if (document.visibilityState === "visible" && document.hasFocus()) {
+      callback();
+    }
+  }
 
-  if (window.__loading) return;
-  window.__loading = true;
+  document.addEventListener("visibilitychange", check);
+  window.addEventListener("focus", check);
 
-  location.replace(data.url);
+  // initial check in case it's already focused
+  check();
 }
 
-loadIfVisible();
-document.addEventListener("visibilitychange", loadIfVisible);
+runWhenTabFocused(() => {
+  console.log("Tab is focused and visible");
+
+  if (data?.url) {
+    window.location.href = data.url;
+  }
+});
 
 setTimeout(() => {
     location.reload();
