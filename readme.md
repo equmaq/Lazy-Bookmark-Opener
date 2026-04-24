@@ -6,6 +6,12 @@ This reduces startup load time when working with large bookmark folders.
 
 ---
 
+## Installation
+
+Get it from the [Mozilla Add-on Store](https://addons.mozilla.org/en-US/firefox/addon/lazy-bookmark-opener/) or download the [latest version](https://github.com/equmaq/Lazy-Bookmark-Opener/releases/latest) from the releases page and install it manually.
+
+---
+
 ## What it does
 
 When you right-click a bookmark folder, the extension adds an option:
@@ -84,7 +90,7 @@ This extension is designed for workflows involving:
 
 ---
 
-## Icon Attribustions
+## Icon Attribution
 
 Icon is a combination of the following icons from [Flaticon](https://www.flaticon.com/):
 - [New window icons created by Grand Iconic - Flaticon](https://www.flaticon.com/free-icons/new-window)
